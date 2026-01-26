@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "tailwind",
+    "theme",
 ]
 
 MIDDLEWARE = [
@@ -56,7 +58,10 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "portfolio.urls"
+ROOT_URLCONF = "core.urls"
+
+TAILWIND_APP_NAME = "theme"
+TAILWIND_BINARY_PATH = os.path.join(BASE_DIR, "theme", "bin", "tailwindcss-linux-x64")
 
 TEMPLATES = [
     {
@@ -73,7 +78,11 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "portfolio.wsgi.application"
+WSGI_APPLICATION = "core.wsgi.application"
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
