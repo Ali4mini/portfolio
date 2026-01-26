@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "tailwind",
     "theme",
+    "projects",
 ]
 
 MIDDLEWARE = [
@@ -66,7 +67,7 @@ TAILWIND_BINARY_PATH = os.path.join(BASE_DIR, "theme", "bin", "tailwindcss-linux
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / "templates"],  # (Optional) Project-wide templates
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
