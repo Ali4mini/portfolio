@@ -1,0 +1,80 @@
+# PERSO-PORTFOLIO TRANSLATION.
+# Copyright (C) 2025 Ali
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-27 01:00+0330\n"
+"PO-Revision-Date: 2025-01-27 12:00+0330\n"
+"Last-Translator: Ali <your@email.com>\n"
+"Language-Team: Persian <fa@li.org>\n"
+"Language: fa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: portfolio/core/settings.py:133
+msgid "English"
+msgstr "انگلیسی"
+
+#: portfolio/core/settings.py:134
+msgid "Persian"
+msgstr "فارسی"
+
+#: portfolio/templates/home.html:24
+msgid "Helping startups launch MVPs and scale APIs securely."
+msgstr "کمک به استارتاپ‌ها در راه‌اندازی MVP و توسعه امن APIها."
+
+#: portfolio/templates/home.html:30
+msgid "Hire Me"
+msgstr "شروع همکاری"
+
+#: portfolio/templates/home.html:33
+msgid "See Work"
+msgstr "نمونه‌کارها"
+
+#: portfolio/templates/home.html:51
+msgid "Switch Lang"
+msgstr "تغییر زبان"
+
+#: portfolio/templates/home.html:82
+msgid "Services"
+msgstr "خدمات من"
+
+#: portfolio/templates/home.html:88
+msgid "MVP Dev"
+msgstr "توسعه MVP"
+
+#: portfolio/templates/home.html:89
+msgid "Django + Tailwind"
+msgstr "جنگو + تیل‌ویند"
+
+#: portfolio/templates/home.html:95
+msgid "API Design"
+msgstr "طراحی API"
+
+#: portfolio/templates/home.html:102
+msgid "Bot Dev"
+msgstr "ساخت ربات"
+
+#: portfolio/templates/home.html:129
+msgid "Projects coming soon..."
+msgstr "پروژه‌ها به زودی اضافه می‌شوند..."
+
+#: portfolio/templates/home.html:135
+msgid "My Toolbox"
+msgstr "جعبه ابزار"
+
+#: portfolio/templates/home.html:148
+msgid "Have a project?"
+msgstr "پروژه‌ای در ذهن دارید؟"
+
+#: portfolio/templates/home.html:149
+msgid "Let's discuss your requirements."
+msgstr "بیایید در مورد نیازمندی‌های شما صحبت کنیم."
+
+#: portfolio/templates/home.html:152
+msgid "Email Me"
+msgstr "ارسال ایمیل"

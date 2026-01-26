@@ -1,152 +1,157 @@
-{% extends 'base.html' %} {% load static %} {% block title %}Home | Web
-Developer{% endblock %} {% block content %}
+{% extends 'base.html' %}
+{% load static i18n %} <!-- Load i18n for translation hooks -->
 
-<!-- 1. HERO SECTION -->
-<section class="bg-white py-20">
-  <div class="container mx-auto px-6 text-center">
-    <h1 class="text-5xl md:text-6xl font-extrabold text-gray-900 mb-6">
-      Hi, I'm <span class="text-primary">Your Name</span>
-    </h1>
-    <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-      I am a Full Stack Web Developer specializing in Python, Django, and modern
-      frontend technologies. I build clean, scalable, and user-friendly web
-      applications.
-    </p>
-    <div class="flex justify-center gap-4">
-      <a
-        href="#projects"
-        class="bg-primary hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition"
-      >
-        View My Work
-      </a>
-      <a
-        href="#contact"
-        class="bg-white border-2 border-gray-300 hover:border-gray-400 text-gray-700 font-bold py-3 px-8 rounded-lg transition"
-      >
-        Contact Me
-      </a>
-    </div>
-  </div>
-</section>
+{% block content %}
 
-<!-- 2. SKILLS SECTION -->
-<section id="skills" class="py-20 bg-gray-100">
-  <div class="container mx-auto px-6">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl font-bold text-gray-800">Technical Skills</h2>
-      <p class="text-gray-500 mt-2">My tech stack and tools</p>
-    </div>
+<!-- grid-cols-1 (Mobile) -> grid-cols-4 (Desktop) -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[minmax(180px,auto)]">
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <!-- Backend Card -->
-      <div
-        class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1 text-center"
-      >
-        <i class="fas fa-server fa-3x text-primary mb-4"></i>
-        <h4 class="text-xl font-bold mb-2">Backend</h4>
-        <p class="text-gray-600">Python, Django, PostgreSQL, REST APIs</p>
-      </div>
-
-      <!-- Frontend Card -->
-      <div
-        class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1 text-center"
-      >
-        <i class="fas fa-code fa-3x text-green-500 mb-4"></i>
-        <h4 class="text-xl font-bold mb-2">Frontend</h4>
-        <p class="text-gray-600">HTML5, CSS3, JavaScript, TailwindCSS</p>
-      </div>
-
-      <!-- Tools Card -->
-      <div
-        class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1 text-center"
-      >
-        <i class="fas fa-tools fa-3x text-gray-500 mb-4"></i>
-        <h4 class="text-xl font-bold mb-2">Tools</h4>
-        <p class="text-gray-600">Git, Docker, VS Code, Linux</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 3. PROJECTS SECTION (Static Placeholder) -->
-<section id="projects" class="py-20 bg-white">
-  <div class="container mx-auto px-6">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl font-bold text-gray-800">Latest Projects</h2>
-      <div
-        class="bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4 mt-4 inline-block text-left"
-        role="alert"
-      >
-        <p class="font-bold">Note</p>
-        <p>
-          These are static placeholders. We will connect the Database later!
-        </p>
-      </div>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-      <!-- Project 1 -->
-      <div
-        class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200"
-      >
-        <!-- Placeholder image -->
-        <img
-          src="https://placehold.co/600x400?text=Project+One"
-          class="w-full h-64 object-cover"
-          alt="Project 1"
-        />
-        <div class="p-6">
-          <h5 class="text-2xl font-bold mb-2">E-Commerce Platform</h5>
-          <p class="text-gray-600 mb-4">
-            A full-featured shopping site built with Django and Stripe payments.
-          </p>
-          <a
-            href="#"
-            class="inline-block text-primary hover:text-blue-700 font-semibold"
-            >View Code &rarr;</a
-          >
+    <!-- BOX 1: HERO (Top Left - Spans 2 Cols, 2 Rows) -->
+    <div class="md:col-span-2 md:row-span-2 bg-white rounded-3xl p-8 flex flex-col justify-between shadow-sm hover:shadow-md transition">
+        <div>
+            <!-- RTL Support: ml-auto for LTR, mr-auto for RTL -->
+            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-primary text-2xl mb-6">
+                <i class="fas fa-terminal"></i>
+            </div>
+            <h1 class="text-4xl font-bold mb-4 leading-tight">
+                {% if LANGUAGE_CODE == 'fa' %}
+                    من <span class="text-primary">علی</span> هستم.<br>توسعه‌دهنده بک‌اند و جنگو.
+                {% else %}
+                    I'm <span class="text-primary">Ali</span>.<br>I build scalable Django backends.
+                {% endif %}
+            </h1>
+            <p class="text-gray-500 text-lg">
+                {% trans "Helping startups launch MVPs and scale APIs securely." %}
+            </p>
         </div>
-      </div>
-
-      <!-- Project 2 -->
-      <div
-        class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200"
-      >
-        <img
-          src="https://placehold.co/600x400?text=Project+Two"
-          class="w-full h-64 object-cover"
-          alt="Project 2"
-        />
-        <div class="p-6">
-          <h5 class="text-2xl font-bold mb-2">Task Manager App</h5>
-          <p class="text-gray-600 mb-4">
-            A productivity tool using Django REST Framework and React.
-          </p>
-          <a
-            href="#"
-            class="inline-block text-primary hover:text-blue-700 font-semibold"
-            >View Code &rarr;</a
-          >
+        
+        <div class="flex gap-4 mt-8">
+            <a href="mailto:your@email.com" class="bg-dark text-white px-6 py-3 rounded-xl font-medium hover:bg-black transition">
+                {% trans "Hire Me" %}
+            </a>
+            <a href="#projects" class="bg-gray-100 text-gray-700 px-6 py-3 rounded-xl font-medium hover:bg-gray-200 transition">
+                {% trans "See Work" %}
+            </a>
         </div>
-      </div>
     </div>
-  </div>
-</section>
 
-<!-- 4. CONTACT SECTION -->
-<section id="contact" class="bg-gray-900 text-white py-20">
-  <div class="container mx-auto px-6 text-center">
-    <h2 class="text-3xl font-bold mb-4">Let's Work Together</h2>
-    <p class="text-xl text-gray-400 mb-8">
-      Have a project in mind? Send me a message.
-    </p>
-    <a
-      href="mailto:your.email@example.com"
-      class="bg-primary hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-lg transition"
-    >
-      Email Me
+    <!-- BOX 2: PROFILE PHOTO (Top Right - 1 Col, 1 Row) -->
+    <div class="md:col-span-1 md:row-span-1 bg-blue-500 rounded-3xl overflow-hidden relative group">
+        <!-- Replace this URL with your actual photo from static files -->
+        <img src="https://placehold.co/400x400/2563eb/ffffff?text=Ali" 
+             class="w-full h-full object-cover transition duration-500 group-hover:scale-110" alt="Ali">
+        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
+            <p class="text-white text-sm font-medium">📍 Tehran, Iran</p>
+        </div>
+    </div>
+
+    <!-- BOX 3: LANGUAGE & SOCIALS (Top Right - 1 Col, 1 Row) -->
+    <div class="md:col-span-1 md:row-span-1 bg-dark text-white rounded-3xl p-6 flex flex-col justify-between">
+        <div class="flex justify-between items-center">
+            <span class="text-gray-400 text-sm">{% trans "Switch Lang" %}</span>
+            <i class="fas fa-globe text-gray-500"></i>
+        </div>
+        
+        <!-- Language Switcher Logic -->
+        <form action="{% url 'set_language' %}" method="post" class="flex gap-2">
+            {% csrf_token %}
+            <input name="next" type="hidden" value="{{ redirect_to }}">
+            
+            <button type="submit" name="language" value="en" 
+                class="flex-1 py-2 rounded-lg text-sm font-bold transition 
+                {% if LANGUAGE_CODE == 'en' %}bg-white text-black{% else %}bg-gray-800 text-gray-400 hover:bg-gray-700{% endif %}">
+                EN
+            </button>
+            <button type="submit" name="language" value="fa" 
+                class="flex-1 py-2 rounded-lg text-sm font-bold transition 
+                {% if LANGUAGE_CODE == 'fa' %}bg-white text-black{% else %}bg-gray-800 text-gray-400 hover:bg-gray-700{% endif %}">
+                فا
+            </button>
+        </form>
+
+        <div class="flex gap-4 mt-4 text-xl justify-center">
+            <a href="#" class="hover:text-blue-400"><i class="fab fa-github"></i></a>
+            <a href="#" class="hover:text-blue-400"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="hover:text-blue-400"><i class="fab fa-telegram"></i></a>
+        </div>
+    </div>
+
+    <!-- BOX 4: SERVICES LIST (Middle Right - 1 Col, 2 Rows) -->
+    <div class="md:col-span-1 md:row-span-2 bg-white rounded-3xl p-6 border border-gray-200">
+        <h3 class="font-bold text-xl mb-6 flex items-center gap-2">
+            <i class="fas fa-bolt text-yellow-500"></i> {% trans "Services" %}
+        </h3>
+        <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+                <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                <div>
+                    <strong class="block text-gray-900">{% trans "MVP Dev" %}</strong>
+                    <span class="text-sm text-gray-500">{% trans "Django + Tailwind" %}</span>
+                </div>
+            </li>
+            <li class="flex items-start gap-3">
+                <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                <div>
+                    <strong class="block text-gray-900">{% trans "API Design" %}</strong>
+                    <span class="text-sm text-gray-500">DRF / PostgreSQL</span>
+                </div>
+            </li>
+            <li class="flex items-start gap-3">
+                <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                <div>
+                    <strong class="block text-gray-900">{% trans "Bot Dev" %}</strong>
+                    <span class="text-sm text-gray-500">Telegram / Discord</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- BOX 5: FEATURED PROJECTS (Middle - Spans 3 Cols) -->
+    {% for project in projects %}
+    <a href="{{ project.live_url|default:'#' }}" class="md:col-span-1 md:row-span-1 bg-white rounded-3xl p-2 group hover:ring-2 hover:ring-primary transition text-left rtl:text-right">
+        <div class="bg-gray-100 rounded-2xl h-32 overflow-hidden mb-3">
+            {% if project.image %}
+                <img src="{{ project.image.url }}" class="w-full h-full object-cover group-hover:scale-105 transition" alt="{{ project.get_title }}">
+            {% else %}
+                <div class="w-full h-full flex items-center justify-center text-gray-400"><i class="fas fa-image"></i></div>
+            {% endif %}
+        </div>
+        <div class="px-2 pb-2">
+            <h4 class="font-bold text-gray-900 truncate">{{ project.get_title }}</h4>
+            <p class="text-xs text-gray-500 line-clamp-2 mt-1">{{ project.get_description }}</p>
+        </div>
     </a>
-  </div>
-</section>
+    {% endfor %}
 
+    <!-- If no projects, show placeholder -->
+    {% if not projects %}
+    <div class="md:col-span-2 md:row-span-1 bg-gray-200 rounded-3xl flex items-center justify-center text-gray-500 border-2 border-dashed border-gray-300">
+        {% trans "Projects coming soon..." %}
+    </div>
+    {% endif %}
+
+    <!-- BOX 6: TECH STACK (Bottom Wide) -->
+    <div class="md:col-span-2 md:row-span-1 bg-dark text-white rounded-3xl p-6 flex flex-col justify-center">
+        <p class="text-gray-400 text-sm mb-4 uppercase tracking-widest">{% trans "My Toolbox" %}</p>
+        <div class="flex flex-wrap gap-6 text-3xl text-gray-300">
+            <i class="fab fa-python hover:text-yellow-400 transition" title="Python"></i>
+            <i class="fab fa-docker hover:text-blue-500 transition" title="Docker"></i>
+            <i class="fas fa-database hover:text-blue-300 transition" title="PostgreSQL"></i>
+            <i class="fab fa-js hover:text-yellow-300 transition" title="JavaScript"></i>
+            <i class="fab fa-linux hover:text-white transition" title="Linux"></i>
+        </div>
+    </div>
+    
+    <!-- BOX 7: CTA (Bottom Right) -->
+    <div class="md:col-span-2 bg-primary rounded-3xl p-8 flex flex-col md:flex-row items-center justify-between text-white">
+        <div class="text-center md:text-left rtl:md:text-right mb-4 md:mb-0">
+            <h2 class="text-2xl font-bold">{% trans "Have a project?" %}</h2>
+            <p class="text-blue-100">{% trans "Let's discuss your requirements." %}</p>
+        </div>
+        <a href="mailto:your@email.com" class="bg-white text-primary px-8 py-3 rounded-xl font-bold hover:bg-gray-100 transition shadow-lg">
+            {% trans "Email Me" %}
+        </a>
+    </div>
+
+</div>
 {% endblock %}
