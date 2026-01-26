@@ -9,31 +9,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Ali | Django Developer{% endblock %}</title>
 
-    <!-- 1. Google Fonts: Inter (EN) and Vazirmatn (FA) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Vazirmatn:wght@300;400;600;800&display=swap" rel="stylesheet">
-
-    <!-- 2. FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- 3. Tailwind CSS + Config -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Configuration -->
     <script>
         tailwind.config = {
-            darkMode: 'class', // We might use this later
+            darkMode: 'class', // This is crucial!
             theme: {
                 extend: {
                     fontFamily: {
-                        // Define our custom font stacks
                         sans: ['Inter', 'sans-serif'], 
                         persian: ['Vazirmatn', 'sans-serif'],
                     },
                     colors: {
-                        primary: '#2563eb', // Royal Blue
-                        dark: '#0f172a',    // Slate 900
+                        primary: '#2563eb', 
+                        // We will rely on standard 'slate' colors for dark mode now
+                        // to prevent config errors.
                     }
                 }
+            }
+        }
+    </script>
+
+    <!-- Theme Logic -->
+    <script>
+        // 1. Initialize on load
+        const initTheme = () => {
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        };
+        initTheme(); // Run immediately
+
+        // 2. Toggle function (Global scope)
+        function toggleTheme() {
+            const html = document.documentElement;
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                html.classList.add('dark');
+                localStorage.theme = 'dark';
             }
         }
     </script>
@@ -45,7 +68,10 @@
     2. If Language is English: Apply 'font-sans'
     3. 'bg-gray-100' gives the bento boxes contrast 
 -->
-<body class="{% if LANGUAGE_CODE == 'fa' %}font-persian{% else %}font-sans{% endif %} bg-gray-100 text-gray-800 min-h-screen p-4 md:p-8">
+<body class="{% if LANGUAGE_CODE == 'fa' %}font-persian{% else %}font-sans{% endif %} 
+             bg-gray-100 text-gray-800 
+             dark:bg-slate-950 dark:text-gray-200 
+             transition-colors duration-300 min-h-screen p-4 md:p-8">
     
     <!-- We don't need a traditional Navbar for Bento style. 
          The grid handles navigation. -->

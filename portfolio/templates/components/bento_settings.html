@@ -1,0 +1,65 @@
+{% load static i18n %}
+
+<div
+  class="md:col-span-1 md:row-span-1 bg-gray-900 dark:bg-gray-800 text-white rounded-3xl p-6 flex flex-col justify-between shadow-lg"
+>
+  <!-- Header with Theme Toggle -->
+  <div class="flex justify-between items-center">
+    <span class="text-gray-400 text-sm">{% trans "Settings" %}</span>
+
+    <!-- The Javascript function is now in main.js -->
+    <button
+      onclick="toggleTheme()"
+      class="text-yellow-400 hover:text-yellow-300 transition focus:outline-none p-1 rounded-md hover:bg-gray-700"
+    >
+      <i class="fas fa-sun block dark:hidden"></i>
+      <i class="fas fa-moon hidden dark:block"></i>
+    </button>
+  </div>
+
+  <!-- Language Switcher -->
+  <form action="{% url 'set_language' %}" method="post" class="flex gap-2 mt-2">
+    {% csrf_token %}
+    <input name="next" type="hidden" value="{{ request.path }}" />
+
+    <button
+      type="submit"
+      name="language"
+      value="en"
+      class="flex-1 py-2 rounded-lg text-sm font-bold transition border border-transparent {% if LANGUAGE_CODE == 'en' %}bg-white text-black{% else %}bg-gray-800 text-gray-400 hover:bg-gray-700 hover:border-gray-600{% endif %}"
+    >
+      EN
+    </button>
+    <button
+      type="submit"
+      name="language"
+      value="fa"
+      class="flex-1 py-2 rounded-lg text-sm font-bold transition border border-transparent {% if LANGUAGE_CODE == 'fa' %}bg-white text-black{% else %}bg-gray-800 text-gray-400 hover:bg-gray-700 hover:border-gray-600{% endif %}"
+    >
+      فا
+    </button>
+  </form>
+
+  <!-- Social Links -->
+  <div
+    class="flex gap-4 mt-4 text-xl justify-center border-t border-gray-700 pt-3"
+  >
+    <a
+      href="https://github.com/yourusername"
+      target="_blank"
+      class="hover:text-blue-400 transition transform hover:-translate-y-1"
+      ><i class="fab fa-github"></i
+    ></a>
+    <a
+      href="https://linkedin.com/in/yourusername"
+      target="_blank"
+      class="hover:text-blue-400 transition transform hover:-translate-y-1"
+      ><i class="fab fa-linkedin"></i
+    ></a>
+    <a
+      href="mailto:your@email.com"
+      class="hover:text-blue-400 transition transform hover:-translate-y-1"
+      ><i class="fas fa-envelope"></i
+    ></a>
+  </div>
+</div>
