@@ -1,25 +1,110 @@
-<!-- templates/base.html -->
-<!doctype html>
+{% load static %}
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dev Portfolio</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{% block meta_description %}Portfolio of a Web Developer{% endblock %}">
+    
+    <title>{% block title %}My Portfolio{% endblock %}</title>
+
+    <!-- 1. Tailwind CSS CDN (Development Script) -->
     <script src="https://cdn.tailwindcss.com"></script>
-  </head>
-  <body class="bg-gray-900 text-white font-sans">
-    <nav class="p-6 border-b border-gray-800">
-      <div class="container mx-auto flex justify-between items-center">
-        <a href="/" class="text-2xl font-bold tracking-tighter">DEV_NAME</a>
-        <div class="space-x-6">
-          <a href="#" class="hover:text-blue-400 transition">Projects</a>
-          <a href="#" class="hover:text-blue-400 transition">About</a>
+
+    <!-- 2. FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- 3. Custom Config to extend Tailwind colors if needed -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb', // Custom blue
+                        secondary: '#475569', // Custom slate
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Block for custom CSS files -->
+    {% block extra_css %}{% endblock %}
+</head>
+<body class="flex flex-col min-h-screen bg-gray-50 text-gray-800 font-sans">
+
+    <!-- NAVIGATION -->
+    <nav class="bg-gray-900 text-white shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a class="text-2xl font-bold flex items-center gap-2 hover:text-primary transition" href="{% url 'pages:home' %}">
+                    <i class="fas fa-code"></i> DevPortfolio
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden focus:outline-none">
+                    <i class="fas fa-bars fa-lg"></i>
+                </button>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="{% url 'pages:home' %}" class="hover:text-primary transition">Home</a>
+                    <a href="#skills" class="hover:text-primary transition">Skills</a>
+                    <a href="{% url 'projects:project_list' %}" class="hover:text-primary transition">Projects</a>
+                    <a href="#contact" class="bg-primary hover:bg-blue-600 px-4 py-2 rounded text-white transition">Contact</a>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Dropdown -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 flex flex-col space-y-4 pb-4">
+                <a href="{% url 'pages:home' %}" class="hover:text-primary transition">Home</a>
+                <a href="#skills" class="hover:text-primary transition">Skills</a>
+                <a href="#projects" class="hover:text-primary transition">Projects</a>
+                <a href="#contact" class="hover:text-primary transition">Contact</a>
+            </div>
         </div>
-      </div>
     </nav>
 
-    <main class="container mx-auto px-6 py-12">
-      {% block content %} {% endblock %}
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow">
+        <!-- Django Messages -->
+        {% if messages %}
+            <div class="container mx-auto px-6 mt-6">
+                {% for message in messages %}
+                    <div class="p-4 mb-4 text-sm text-white bg-blue-500 rounded-lg" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% block content %}
+        {% endblock %}
     </main>
-  </body>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-white py-8 mt-auto">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="#" class="hover:text-primary transition text-2xl"><i class="fab fa-github"></i></a>
+                <a href="#" class="hover:text-primary transition text-2xl"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="hover:text-primary transition text-2xl"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p class="text-gray-400 text-sm">&copy; {% now "Y" %} Your Name. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Simple script to toggle mobile menu
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
+    {% block extra_js %}{% endblock %}
+</body>
 </html>
