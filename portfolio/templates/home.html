@@ -3,177 +3,144 @@
 
 {% block content %}
 
-<!-- THE BENTO GRID -->
-<!-- Layout: 1 Column on Mobile, 4 Columns on Desktop -->
-<div class="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[minmax(180px,auto)] pb-10 dark:bg-slate-900">
+<!-- BENTO GRID -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[minmax(180px,auto)] pb-10">
 
-    <!-- BOX 1: HERO (Top Left - Spans 2 Cols, 2 Rows) -->
-    <!-- Fixed: Changed dark:bg-dark to dark:bg-slate-900 -->
-    <div class="md:col-span-2 md:row-span-2 bg-white dark:bg-slate-900 rounded-3xl p-8 flex flex-col justify-between shadow-sm hover:shadow-md transition-all duration-300 border border-transparent dark:border-slate-800">
+    <!-- 1. HERO -->
+    <!-- Added: bg-noise -->
+    <div class="md:col-span-2 md:row-span-2 bg-white dark:bg-slate-900 bg-noise rounded-3xl p-8 flex flex-col justify-between shadow-sm border border-transparent dark:border-white/5 transition-all duration-300">
         <div>
-            <!-- Icon Background: blue-100 (light) -> blue-900 (dark) -->
-            <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center text-primary dark:text-blue-300 text-2xl mb-6 transition-colors duration-300">
+            <div class="w-16 h-16 bg-blue-50 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center text-primary dark:text-blue-400 text-2xl mb-6 shadow-inner">
                 <i class="fas fa-terminal"></i>
             </div>
             
-            <h1 class="text-4xl font-bold mb-4 leading-tight text-gray-900 dark:text-white transition-colors duration-300">
+            <h1 class="text-4xl font-bold mb-4 leading-tight text-gray-900 dark:text-white">
                 {% if LANGUAGE_CODE == 'fa' %}
-                    من <span class="text-primary">علی</span> هستم.<br>توسعه‌دهنده بک‌اند و جنگو.
+                    من <span class="text-primary">علی</span> هستم.<br>توسعه‌دهنده بک‌اند.
                 {% else %}
-                    I'm <span class="text-primary">Ali</span>.<br>I build scalable Django backends.
+                    I'm <span class="text-primary">Ali</span>.<br>I build scalable Backends.
                 {% endif %}
             </h1>
             
-            <p class="text-gray-500 dark:text-gray-400 text-lg transition-colors duration-300">
+            <p class="text-gray-500 dark:text-gray-400 text-lg">
                 {% trans "Helping startups launch MVPs and scale APIs securely." %}
             </p>
         </div>
         
-        <!-- Action Buttons -->
         <div class="flex gap-4 mt-8">
-            <a href="mailto:your@email.com" class="bg-gray-900 dark:bg-white text-white dark:text-black px-6 py-3 rounded-xl font-medium hover:opacity-90 transition shadow-lg">
+            <a href="mailto:your@email.com" class="bg-gray-900 dark:bg-white text-white dark:text-black px-6 py-3 rounded-xl font-bold hover:opacity-90 transition shadow-lg">
                 {% trans "Hire Me" %}
             </a>
-            <a href="#projects" class="bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-200 px-6 py-3 rounded-xl font-medium hover:bg-gray-200 dark:hover:bg-slate-700 transition">
+            <a href="#projects" class="bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-white px-6 py-3 rounded-xl font-bold hover:bg-gray-200 dark:hover:bg-slate-700 transition">
                 {% trans "See Work" %}
             </a>
         </div>
     </div>
 
-    <!-- BOX 2: PROFILE PHOTO (Top Right - 1 Col, 1 Row) -->
-    <div class="md:col-span-1 md:row-span-1 bg-blue-500 rounded-3xl overflow-hidden relative group shadow-sm">
-        <!-- Placeholder Image -->
-        <img src="https://placehold.co/400x400/2563eb/ffffff?text=Ali" 
-             class="w-full h-full object-cover transition duration-500 group-hover:scale-110" alt="Ali">
-        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
-            <p class="text-white text-sm font-medium">📍 Tehran, Iran</p>
+    <!-- 2. PHOTO -->
+    <div class="md:col-span-1 md:row-span-1 bg-blue-600 rounded-3xl overflow-hidden relative group shadow-sm border border-transparent dark:border-white/5">
+        <img src="http://localhost:5500/Generated%20Image%20October%2026%2C%202025%20-%201_06PM.png" class="w-full h-full object-cover transition duration-500 group-hover:scale-110" alt="Ali">
+        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+            <p class="text-white text-sm font-medium"><i class="fas fa-map-marker-alt text-red-500 mr-1"></i> Tehran, Iran</p>
         </div>
     </div>
 
-    <!-- BOX 3: SETTINGS & SOCIALS (Top Right - 1 Col, 1 Row) -->
-    <!-- Fixed: Uses slate-900 for high contrast in both modes (or slate-800 in dark) -->
-    <div class="md:col-span-1 md:row-span-1 bg-slate-900 dark:bg-slate-800 text-white rounded-3xl p-6 flex flex-col justify-between shadow-lg transition-colors duration-300">
-        
-        <!-- Header with Dark Mode Toggle -->
+    <!-- 3. SETTINGS -->
+    <!-- Added: bg-noise -->
+    <div class="md:col-span-1 md:row-span-1 bg-gray-900 dark:bg-slate-900 bg-noise text-white rounded-3xl p-6 flex flex-col justify-between shadow-lg border border-transparent dark:border-white/5">
         <div class="flex justify-between items-center">
             <span class="text-gray-400 text-sm">{% trans "Settings" %}</span>
-            <!-- Toggle Button -->
-            <button onclick="toggleTheme()" class="text-yellow-400 hover:text-yellow-300 transition focus:outline-none p-2 rounded hover:bg-white/10">
-                <i class="fas fa-sun block dark:hidden"></i> <!-- Shows in Light Mode -->
-                <i class="fas fa-moon hidden dark:block"></i> <!-- Shows in Dark Mode -->
+            <button onclick="toggleTheme()" class="text-yellow-400 hover:text-yellow-300 transition focus:outline-none p-2 rounded-full hover:bg-white/10">
+                <i class="fas fa-sun block dark:hidden"></i>
+                <i class="fas fa-moon hidden dark:block"></i>
             </button>
         </div>
         
-        <!-- Language Switcher -->
         <form action="{% url 'set_language' %}" method="post" class="flex gap-2 mt-2">
             {% csrf_token %}
             <input name="next" type="hidden" value="{{ request.path }}">
-            
-            <button type="submit" name="language" value="en" 
-                class="flex-1 py-2 rounded-lg text-sm font-bold transition border border-transparent
-                {% if LANGUAGE_CODE == 'en' %}bg-white text-black{% else %}bg-slate-800 text-gray-400 hover:bg-slate-700 hover:border-gray-600{% endif %}">
-                EN
-            </button>
-            <button type="submit" name="language" value="fa" 
-                class="flex-1 py-2 rounded-lg text-sm font-bold transition border border-transparent
-                {% if LANGUAGE_CODE == 'fa' %}bg-white text-black{% else %}bg-slate-800 text-gray-400 hover:bg-slate-700 hover:border-gray-600{% endif %}">
-                فا
-            </button>
+            <button type="submit" name="language" value="en" class="flex-1 py-2 rounded-lg text-sm font-bold transition {% if LANGUAGE_CODE == 'en' %}bg-white text-black{% else %}bg-slate-800 text-gray-400 hover:bg-slate-700{% endif %}">EN</button>
+            <button type="submit" name="language" value="fa" class="flex-1 py-2 rounded-lg text-sm font-bold transition {% if LANGUAGE_CODE == 'fa' %}bg-white text-black{% else %}bg-slate-800 text-gray-400 hover:bg-slate-700{% endif %}">فا</button>
         </form>
 
-        <!-- Social Icons -->
         <div class="flex gap-4 mt-4 text-xl justify-center border-t border-gray-700 pt-3">
-            <a href="#" class="hover:text-blue-400 transition transform hover:-translate-y-1"><i class="fab fa-github"></i></a>
-            <a href="#" class="hover:text-blue-400 transition transform hover:-translate-y-1"><i class="fab fa-linkedin"></i></a>
-            <a href="#" class="hover:text-blue-400 transition transform hover:-translate-y-1"><i class="fab fa-telegram"></i></a>
+            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-github"></i></a>
+            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-telegram"></i></a>
         </div>
     </div>
 
-    <!-- BOX 4: SERVICES LIST (Middle Right - 1 Col, 2 Rows) -->
-    <div class="md:col-span-1 md:row-span-2 bg-white dark:bg-slate-900 rounded-3xl p-6 border border-gray-200 dark:border-slate-800 transition-colors duration-300 shadow-sm">
+    <!-- 4. SERVICES -->
+    <!-- Added: bg-noise -->
+    <div class="md:col-span-1 md:row-span-2 bg-white dark:bg-slate-900 bg-noise rounded-3xl p-6 border border-transparent dark:border-white/5 shadow-sm">
         <h3 class="font-bold text-xl mb-6 flex items-center gap-2 text-gray-900 dark:text-white">
             <i class="fas fa-bolt text-yellow-500"></i> {% trans "Services" %}
         </h3>
         <ul class="space-y-4">
-            <!-- Service 1 -->
             <li class="flex items-start gap-3">
-                <i class="fas fa-check-circle text-green-500 mt-1"></i>
-                <div>
-                    <strong class="block text-gray-900 dark:text-gray-200">{% trans "MVP Dev" %}</strong>
-                    <span class="text-sm text-gray-500 dark:text-gray-400">{% trans "Django + Tailwind" %}</span>
-                </div>
+                <div class="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center text-green-500 mt-1"><i class="fas fa-check text-xs"></i></div>
+                <div><strong class="block text-gray-900 dark:text-gray-200">{% trans "MVP Dev" %}</strong><span class="text-xs text-gray-500">Django + Tailwind</span></div>
             </li>
-            <!-- Service 2 -->
             <li class="flex items-start gap-3">
-                <i class="fas fa-check-circle text-green-500 mt-1"></i>
-                <div>
-                    <strong class="block text-gray-900 dark:text-gray-200">{% trans "API Design" %}</strong>
-                    <span class="text-sm text-gray-500 dark:text-gray-400">DRF / PostgreSQL</span>
-                </div>
+                <div class="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center text-green-500 mt-1"><i class="fas fa-check text-xs"></i></div>
+                <div><strong class="block text-gray-900 dark:text-gray-200">{% trans "API Design" %}</strong><span class="text-xs text-gray-500">DRF / Postgres</span></div>
             </li>
-            <!-- Service 3 -->
             <li class="flex items-start gap-3">
-                <i class="fas fa-check-circle text-green-500 mt-1"></i>
-                <div>
-                    <strong class="block text-gray-900 dark:text-gray-200">{% trans "Bot Dev" %}</strong>
-                    <span class="text-sm text-gray-500 dark:text-gray-400">Telegram / Discord</span>
-                </div>
+                <div class="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center text-green-500 mt-1"><i class="fas fa-check text-xs"></i></div>
+                <div><strong class="block text-gray-900 dark:text-gray-200">{% trans "Bot Dev" %}</strong><span class="text-xs text-gray-500">Telegram / Discord</span></div>
             </li>
         </ul>
     </div>
 
-    <!-- BOX 5 & 6: FEATURED PROJECTS (Middle - Spans 2 Cols) -->
+    <!-- 5 & 6. PROJECTS -->
+    <!-- Added: bg-noise -->
     {% for project in projects %}
-    <a href="{{ project.live_url|default:'#' }}" class="md:col-span-1 md:row-span-1 bg-white dark:bg-slate-900 rounded-3xl p-2 group hover:ring-2 hover:ring-primary transition border border-transparent dark:border-slate-800 shadow-sm">
-        <div class="bg-gray-100 dark:bg-slate-800 rounded-2xl h-32 overflow-hidden mb-3 relative">
+    <a href="{{ project.live_url|default:'#' }}" class="md:col-span-1 md:row-span-1 bg-white dark:bg-slate-900 bg-noise rounded-3xl p-3 group border border-transparent dark:border-white/5 hover:border-primary/50 transition relative overflow-hidden">
+        <div class="bg-gray-100 dark:bg-slate-800 rounded-2xl h-32 overflow-hidden mb-3 relative z-10">
             {% if project.image %}
                 <img src="{{ project.image.url }}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="{{ project.get_title }}">
             {% else %}
-                <div class="w-full h-full flex items-center justify-center text-gray-400"><i class="fas fa-image fa-2x"></i></div>
-            {% endif %}
-            
-            <!-- Featured Badge -->
-            {% if project.is_featured %}
-            <span class="absolute top-2 right-2 bg-yellow-400 text-yellow-900 text-xs font-bold px-2 py-1 rounded-full">
-                ★ Featured
-            </span>
+                <div class="w-full h-full flex items-center justify-center text-gray-400"><i class="fas fa-code fa-2x"></i></div>
             {% endif %}
         </div>
-        <div class="px-2 pb-2">
-            <h4 class="font-bold text-gray-900 dark:text-white truncate transition-colors duration-300">{{ project.get_title }}</h4>
-            <p class="text-xs text-gray-500 dark:text-gray-400 line-clamp-2 mt-1 transition-colors duration-300">{{ project.get_description }}</p>
+        <div class="px-1 relative z-10">
+            <h4 class="font-bold text-gray-900 dark:text-white truncate">{{ project.get_title }}</h4>
+            <p class="text-xs text-gray-500 line-clamp-1">{{ project.get_description }}</p>
         </div>
     </a>
     {% endfor %}
 
-    <!-- Fallback if no projects exist -->
+    <!-- Placeholder -->
     {% if not projects %}
-    <div class="md:col-span-2 md:row-span-1 bg-gray-100 dark:bg-slate-800 rounded-3xl flex items-center justify-center text-gray-500 border-2 border-dashed border-gray-300 dark:border-slate-600">
-        <span class="flex items-center gap-2">
-            <i class="fas fa-hammer"></i> {% trans "Projects coming soon..." %}
-        </span>
+    <div class="md:col-span-2 md:row-span-1 bg-gray-50 dark:bg-slate-900 bg-noise rounded-3xl flex flex-col items-center justify-center text-gray-400 border-2 border-dashed border-gray-300 dark:border-slate-700">
+        <i class="fas fa-layer-group text-3xl mb-2 opacity-50"></i>
+        <span>{% trans "Projects coming soon..." %}</span>
     </div>
     {% endif %}
 
-    <!-- BOX 7: TECH STACK (Bottom Wide) -->
-    <div class="md:col-span-2 md:row-span-1 bg-slate-900 dark:bg-black text-white rounded-3xl p-6 flex flex-col justify-center shadow-lg transition-colors duration-300">
-        <p class="text-gray-400 text-sm mb-4 uppercase tracking-widest">{% trans "My Toolbox" %}</p>
-        <div class="flex flex-wrap gap-6 text-3xl text-gray-300">
-            <i class="fab fa-python hover:text-yellow-400 transition transform hover:scale-110" title="Python"></i>
-            <i class="fab fa-docker hover:text-blue-500 transition transform hover:scale-110" title="Docker"></i>
-            <i class="fas fa-database hover:text-blue-300 transition transform hover:scale-110" title="PostgreSQL"></i>
-            <i class="fab fa-js hover:text-yellow-300 transition transform hover:scale-110" title="JavaScript"></i>
-            <i class="fab fa-linux hover:text-white transition transform hover:scale-110" title="Linux"></i>
+    <!-- 7. TOOLBOX -->
+    <!-- Added: bg-noise -->
+    <div class="md:col-span-2 md:row-span-1 bg-gray-900 dark:bg-slate-900 bg-noise text-white rounded-3xl p-8 flex flex-col justify-center border border-transparent dark:border-white/5">
+        <p class="text-gray-400 text-xs font-bold uppercase tracking-widest mb-4">{% trans "My Toolbox" %}</p>
+        <div class="flex flex-wrap gap-8 text-4xl text-gray-500 dark:text-slate-600 grayscale hover:grayscale-0 transition-all duration-300">
+            <i class="fab fa-python hover:text-yellow-400 transition transform hover:-translate-y-1"></i>
+            <i class="fab fa-docker hover:text-blue-500 transition transform hover:-translate-y-1"></i>
+            <i class="fas fa-database hover:text-blue-300 transition transform hover:-translate-y-1"></i>
+            <i class="fab fa-js hover:text-yellow-300 transition transform hover:-translate-y-1"></i>
+            <i class="fab fa-linux hover:text-white transition transform hover:-translate-y-1"></i>
         </div>
     </div>
     
-    <!-- BOX 8: CTA (Bottom Right) -->
-    <div class="md:col-span-2 bg-primary rounded-3xl p-8 flex flex-col md:flex-row items-center justify-between text-white shadow-lg">
-        <div class="text-center md:text-left rtl:md:text-right mb-4 md:mb-0">
+    <!-- 8. CTA -->
+    <div class="md:col-span-2 bg-primary rounded-3xl p-8 flex flex-col md:flex-row items-center justify-between text-white shadow-xl shadow-blue-900/20 relative overflow-hidden">
+        <!-- Optional: Add a subtle glow effect behind CTA -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        
+        <div class="text-center md:text-left rtl:md:text-right mb-4 md:mb-0 relative z-10">
             <h2 class="text-2xl font-bold">{% trans "Have a project?" %}</h2>
-            <p class="text-blue-100">{% trans "Let's discuss your requirements." %}</p>
+            <p class="text-blue-100 text-sm">{% trans "Let's discuss your requirements." %}</p>
         </div>
-        <a href="mailto:your@email.com" class="bg-white text-primary px-8 py-3 rounded-xl font-bold hover:bg-blue-50 transition shadow-md whitespace-nowrap">
+        <a href="mailto:your@email.com" class="relative z-10 bg-white text-primary px-8 py-3 rounded-xl font-bold hover:bg-blue-50 transition shadow-lg">
             {% trans "Email Me" %}
         </a>
     </div>
