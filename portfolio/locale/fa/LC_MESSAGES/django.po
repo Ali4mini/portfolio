@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-27 01:00+0330\n"
+"POT-Creation-Date: 2026-01-29 00:21+0330\n"
 "PO-Revision-Date: 2025-01-27 12:00+0330\n"
 "Last-Translator: Ali <your@email.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
@@ -23,58 +23,118 @@ msgstr "انگلیسی"
 msgid "Persian"
 msgstr "فارسی"
 
-#: portfolio/templates/home.html:24
+#: portfolio/pages/forms.py:15
+msgid "Your Name"
+msgstr "نام شما"
+
+#: portfolio/pages/forms.py:21
+msgid "Your Email"
+msgstr "ایمیل شما"
+
+#: portfolio/pages/forms.py:27
+msgid "Subject"
+msgstr "موضوع"
+
+#: portfolio/pages/forms.py:33
+msgid "How can I help you?"
+msgstr "چطور می‌توانم به شما کمک کنم؟"
+
+#: portfolio/pages/views.py:19
+msgid "Your message has been sent successfully! I will contact you soon."
+msgstr "پیام شما با موفقیت ارسال شد! به زودی با شما تماس خواهم گرفت."
+
+#: portfolio/pages/views.py:25
+msgid "There was an error in your form. Please check the fields."
+msgstr "خطایی در فرم شما وجود دارد. لطفاً فیلدها را بررسی کنید."
+
+#: portfolio/projects/templates/projects/project_detail.html:11
+msgid "Back to Portfolio"
+msgstr "بازگشت به نمونه‌کارها"
+
+#: portfolio/projects/templates/projects/project_detail.html:53
+msgid "Project Info"
+msgstr "اطلاعات پروژه"
+
+#: portfolio/projects/templates/projects/project_detail.html:57
+msgid "Category"
+msgstr "دسته‌بندی"
+
+#: portfolio/projects/templates/projects/project_detail.html:68
+msgid "Tech Stack"
+msgstr "تکنولوژی‌های استفاده شده"
+
+#: portfolio/projects/templates/projects/project_detail.html:88
+msgid "Live Demo"
+msgstr "پیش‌نمایش زنده"
+
+#: portfolio/projects/templates/projects/project_detail.html:94
+msgid "Source Code"
+msgstr "سورس کد"
+
+#: portfolio/templates/components/bento_settings.html:8
+#: portfolio/templates/home.html:52
+msgid "Settings"
+msgstr "تنظیمات"
+
+#: portfolio/templates/home.html:26
 msgid "Helping startups launch MVPs and scale APIs securely."
 msgstr "کمک به استارتاپ‌ها در راه‌اندازی MVP و توسعه امن APIها."
 
-#: portfolio/templates/home.html:30
+#: portfolio/templates/home.html:32
 msgid "Hire Me"
 msgstr "شروع همکاری"
 
-#: portfolio/templates/home.html:33
+#: portfolio/templates/home.html:35
 msgid "See Work"
 msgstr "نمونه‌کارها"
 
-#: portfolio/templates/home.html:51
-msgid "Switch Lang"
-msgstr "تغییر زبان"
-
-#: portfolio/templates/home.html:82
+#: portfolio/templates/home.html:77
 msgid "Services"
 msgstr "خدمات من"
 
-#: portfolio/templates/home.html:88
+#: portfolio/templates/home.html:82
 msgid "MVP Dev"
 msgstr "توسعه MVP"
 
-#: portfolio/templates/home.html:89
-msgid "Django + Tailwind"
-msgstr "جنگو + تیل‌ویند"
-
-#: portfolio/templates/home.html:95
+#: portfolio/templates/home.html:86
 msgid "API Design"
 msgstr "طراحی API"
 
-#: portfolio/templates/home.html:102
+#: portfolio/templates/home.html:90
 msgid "Bot Dev"
 msgstr "ساخت ربات"
 
-#: portfolio/templates/home.html:129
+#: portfolio/templates/home.html:117
 msgid "Projects coming soon..."
 msgstr "پروژه‌ها به زودی اضافه می‌شوند..."
 
-#: portfolio/templates/home.html:135
+#: portfolio/templates/home.html:124
 msgid "My Toolbox"
-msgstr "جعبه ابزار"
+msgstr "جعبه ابزار من"
 
-#: portfolio/templates/home.html:148
-msgid "Have a project?"
-msgstr "پروژه‌ای در ذهن دارید؟"
+#: portfolio/templates/home.html:136
+msgid "Let's Work Together"
+msgstr "بیایید با هم کار کنیم"
 
-#: portfolio/templates/home.html:149
-msgid "Let's discuss your requirements."
-msgstr "بیایید در مورد نیازمندی‌های شما صحبت کنیم."
+#: portfolio/templates/home.html:137
+msgid "Have a project in mind? Fill out the form below."
+msgstr "پروژه‌ای در ذهن دارید؟ فرم زیر را پر کنید."
 
-#: portfolio/templates/home.html:152
-msgid "Email Me"
-msgstr "ارسال ایمیل"
+#: portfolio/templates/home.html:167
+msgid "Send Message"
+msgstr "ارسال پیام"
+
+#~ msgid "Switch Lang"
+#~ msgstr "تغییر زبان"
+
+#~ msgid "Django + Tailwind"
+#~ msgstr "جنگو + تیل‌ویند"
+
+#~ msgid "Have a project?"
+#~ msgstr "پروژه‌ای در ذهن دارید؟"
+
+#~ msgid "Let's discuss your requirements."
+#~ msgstr "بیایید در مورد نیازمندی‌های شما صحبت کنیم."
+
+#~ msgid "Email Me"
+#~ msgstr "ارسال ایمیل"

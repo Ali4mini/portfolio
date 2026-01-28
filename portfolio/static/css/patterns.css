@@ -141,3 +141,13 @@
   position: relative;
   z-index: 1;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Optional: Add some padding when jumping to an anchor 
+   so the box isn't touching the very top of the screen */
+#contact {
+  scroll-margin-top: 2rem;
+}
