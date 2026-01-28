@@ -70,3 +70,11 @@ class Project(models.Model):
         if get_language() == "fa":
             return self.body_fa
         return self.body_en
+
+    def get_tools_list(self):
+        """
+        Splits 'Django, Docker, Redis' into ['Django', 'Docker', 'Redis']
+        """
+        if not self.tools:
+            return []
+        return [tool.strip() for tool in self.tools.split(",")]

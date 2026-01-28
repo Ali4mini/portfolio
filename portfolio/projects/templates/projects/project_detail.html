@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block title %}{{ project.get_title }} | Ali{% endblock %}
+
+{% block content %}
+
+<!-- BACK BUTTON -->
+<div class="mb-8">
+    <a href="{% url 'pages:home' %}" class="inline-flex items-center gap-2 text-gray-500 dark:text-gray-400 hover:text-primary transition font-medium">
+        <i class="fas fa-arrow-left rtl:rotate-180"></i> {% trans "Back to Portfolio" %}
+    </a>
+</div>
+
+<article class="bg-white dark:bg-slate-900 bg-noise rounded-3xl overflow-hidden shadow-xl border border-transparent dark:border-white/5">
+    
+    <!-- 1. HERO IMAGE -->
+    <div class="h-64 md:h-96 w-full relative group">
+        {% if project.image %}
+            <img src="{{ project.image.url }}" alt="{{ project.get_title }}" class="w-full h-full object-cover">
+        {% else %}
+            <div class="w-full h-full bg-gray-200 dark:bg-slate-800 flex items-center justify-center">
+                <i class="fas fa-image text-4xl text-gray-400"></i>
+            </div>
+        {% endif %}
+        
+        <!-- Overlay Gradient -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-8">
+            <h1 class="text-3xl md:text-5xl font-bold text-white shadow-sm">{{ project.get_title }}</h1>
+        </div>
+    </div>
+
+    <!-- 2. CONTENT GRID -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 p-8 md:p-12">
+        
+        <!-- LEFT: MAIN CONTENT (Case Study) -->
+        <div class="lg:col-span-2">
+            <!-- Short Description -->
+            <p class="text-xl text-gray-600 dark:text-gray-300 leading-relaxed font-medium mb-8 border-l-4 border-primary pl-4">
+                {{ project.get_description }}
+            </p>
+
+            <!-- Main Body -->
+            <div class="prose dark:prose-invert max-w-none text-gray-800 dark:text-gray-300 leading-7 whitespace-pre-line">
+                {{ project.get_body }}
+            </div>
+        </div>
+
+        <!-- RIGHT: SIDEBAR (Metadata) -->
+        <div class="lg:col-span-1">
+            <div class="bg-gray-50 dark:bg-slate-800/50 rounded-2xl p-6 sticky top-8 border border-gray-100 dark:border-white/5">
+                
+                <h3 class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-6">{% trans "Project Info" %}</h3>
+
+                <!-- Category -->
+                <div class="mb-6">
+                    <span class="block text-xs text-gray-500 mb-1">{% trans "Category" %}</span>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-primary dark:text-blue-300 text-sm font-bold">
+                        {% if project.category == 'web' %}<i class="fas fa-globe"></i> Web App
+                        {% elif project.category == 'api' %}<i class="fas fa-server"></i> Backend API
+                        {% elif project.category == 'bot' %}<i class="fas fa-robot"></i> Automation Bot
+                        {% endif %}
+                    </div>
+                </div>
+
+<!-- Tools -->
+<div class="mb-8">
+    <span class="block text-xs text-gray-500 mb-2">{% trans "Tech Stack" %}</span>
+    
+    <div class="flex flex-wrap gap-2">
+        <!-- Use the new helper method here -->
+        {% for tool in project.get_tools_list %}
+        <span class="inline-flex items-center px-3 py-1 rounded-lg text-sm font-medium 
+                     bg-gray-100 text-gray-700 
+                     dark:bg-slate-700 dark:text-gray-200 
+                     border border-gray-200 dark:border-slate-600
+                     transition hover:scale-105 cursor-default">
+           {{ tool }}
+        </span>
+        {% endfor %}
+    </div>
+</div>
+
+                <!-- Links -->
+                <div class="space-y-3">
+                    {% if project.live_url %}
+                    <a href="{{ project.live_url }}" target="_blank" class="flex items-center justify-center gap-2 w-full bg-primary text-white py-3 rounded-xl font-bold hover:bg-blue-600 transition shadow-lg shadow-blue-500/20">
+                        <i class="fas fa-external-link-alt"></i> {% trans "Live Demo" %}
+                    </a>
+                    {% endif %}
+                    
+                    {% if project.github_url %}
+                    <a href="{{ project.github_url }}" target="_blank" class="flex items-center justify-center gap-2 w-full bg-gray-800 dark:bg-white text-white dark:text-black py-3 rounded-xl font-bold hover:opacity-90 transition">
+                        <i class="fab fa-github"></i> {% trans "Source Code" %}
+                    </a>
+                    {% endif %}
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</article>
+
+{% endblock %}

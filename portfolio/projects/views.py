@@ -1,14 +1,11 @@
-# projects/views.py
 from django.shortcuts import get_object_or_404, render
 
 from .models import Project
 
 
-def projects_list(request):
-    projects = Project.objects.all()
-    return render(request, "projects/index.html", {"projects": projects})
-
-
 def project_detail(request, slug):
+    # Retrieve project or show 404
     project = get_object_or_404(Project, slug=slug)
-    return render(request, "projects/detail.html", {"project": project})
+
+    context = {"project": project}
+    return render(request, "projects/project_detail.html", context)
