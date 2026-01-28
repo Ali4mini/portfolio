@@ -1,7 +1,20 @@
 {% extends 'base.html' %}
 {% load static i18n %}
 
-{% block title %}{{ project.get_title }} | Ali{% endblock %}
+
+{% block title %}{{ project.get_title }} | Alireza Amini{% endblock %}
+
+{% block meta_description %}{{ project.get_description }}{% endblock %}
+
+{% block og_title %}{{ project.get_title }}{% endblock %}
+{% block og_description %}{{ project.get_description }}{% endblock %}
+
+<!-- If you have an image for the project, use it for sharing -->
+{% block extra_head %}
+    {% if project.image %}
+    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ project.image.url }}">
+    {% endif %}
+{% endblock %}
 
 {% block content %}
 

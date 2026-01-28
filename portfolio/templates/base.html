@@ -7,7 +7,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Ali | Django Developer{% endblock %}</title>
+ <!-- SEO Basics -->
+    <title>{% block title %}Ali | Full-Stack Django Developer{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}Freelance Full-Stack Developer specializing in Django, Python, and scalable web architectures.{% endblock %}">
+    <meta name="keywords" content="Django, Python, Freelance, Web Developer, Iran, Backend, API">
+
+    <!-- OpenGraph (Facebook, LinkedIn, Telegram, WhatsApp) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{% block og_title %}Ali | Django Developer{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}I build scalable backends and MVPs for startups.{% endblock %}">
+    <meta property="og:image" content="{% static 'images/og-share.png' %}"> <!-- Create this 1200x630 image -->
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% block twitter_title %}Ali | Django Developer{% endblock %}">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Vazirmatn:wght@300;400;600;800&display=swap" rel="stylesheet">
