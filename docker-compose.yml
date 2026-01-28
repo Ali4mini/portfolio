@@ -12,6 +12,7 @@ services:
     build: .
     volumes:
       - .:/code
+      - ./media:/code/media
     env_file:
       - .env
     ports:
