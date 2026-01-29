@@ -5,15 +5,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-29 00:21+0330\n"
-"PO-Revision-Date: 2025-01-27 12:00+0330\n"
+"POT-Creation-Date: 2026-01-29 15:15+0330\n"
+"PO-Revision-Date: 2025-01-29 14:45+0330\n"
 "Last-Translator: Ali <your@email.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: portfolio/core/settings.py:133
 msgid "English"
@@ -39,102 +39,173 @@ msgstr "موضوع"
 msgid "How can I help you?"
 msgstr "چطور می‌توانم به شما کمک کنم؟"
 
-#: portfolio/pages/views.py:19
-msgid "Your message has been sent successfully! I will contact you soon."
-msgstr "پیام شما با موفقیت ارسال شد! به زودی با شما تماس خواهم گرفت."
+#: portfolio/pages/views.py:17
+msgid "MVP Development"
+msgstr "توسعه MVP"
 
-#: portfolio/pages/views.py:25
-msgid "There was an error in your form. Please check the fields."
-msgstr "خطایی در فرم شما وجود دارد. لطفاً فیلدها را بررسی کنید."
+#: portfolio/pages/views.py:18
+msgid "From idea to launch."
+msgstr "از ایده تا راه‌اندازی."
 
-#: portfolio/projects/templates/projects/project_detail.html:11
+#: portfolio/pages/views.py:20
+msgid ""
+"I build functional Minimum Viable Products for startups. Includes: Database "
+"architecture, User Authentication, payment integration, and deployment."
+msgstr ""
+"من محصولات کمینه پذیرفتنی (MVP) کاربردی برای استارتاپ‌ها می‌سازم. شامل: معماری "
+"پایگاه‌داده، احراز هویت کاربر، اتصال به درگاه‌های پرداخت و استقرار."
+
+#: portfolio/pages/views.py:27
+msgid "API & Backend"
+msgstr "ای‌پی‌آی و بک‌اِند"
+
+#: portfolio/pages/views.py:28
+msgid "Scalable & Secure."
+msgstr "مقیاس‌پذیر و امن."
+
+#: portfolio/pages/views.py:30
+msgid ""
+"High-performance RESTful APIs using Django Rest Framework. Focus on "
+"security, JWT authentication, and Redis caching."
+msgstr ""
+"توسعه APIهای RESTful با کارایی بالا با استفاده از فریم‌ورک جنگو رست (DRF). "
+"تمرکز بر امنیت، احراز هویت JWT و کشینگ با Redis."
+
+#: portfolio/pages/views.py:37
+msgid "Automation & Bots"
+msgstr "خودکارسازی و ربات‌ها"
+
+#: portfolio/pages/views.py:38
+msgid "Automate the boring stuff."
+msgstr "کارهای تکراری را خودکار کنید."
+
+#: portfolio/pages/views.py:40
+msgid ""
+"Custom Telegram/Discord bots or web scrapers. I help businesses automate "
+"repetitive tasks and data collection."
+msgstr ""
+"ساخت ربات‌های اختصاصی تلگرام و دیسکورد یا خزنده‌های وب. من به کسب‌وکارها کمک می‌کنم تا وظایف تکراری "
+"و جمع‌آوری داده‌ها را خودکار کنند."
+
+#: portfolio/pages/views.py:50
+msgid "Your message has been sent successfully!"
+msgstr "پیام شما با موفقیت ارسال شد!"
+
+#: portfolio/projects/templates/projects/project_detail.html:24
 msgid "Back to Portfolio"
 msgstr "بازگشت به نمونه‌کارها"
 
-#: portfolio/projects/templates/projects/project_detail.html:53
+#: portfolio/projects/templates/projects/project_detail.html:66
 msgid "Project Info"
 msgstr "اطلاعات پروژه"
 
-#: portfolio/projects/templates/projects/project_detail.html:57
+#: portfolio/projects/templates/projects/project_detail.html:70
 msgid "Category"
 msgstr "دسته‌بندی"
 
-#: portfolio/projects/templates/projects/project_detail.html:68
+#: portfolio/projects/templates/projects/project_detail.html:81
 msgid "Tech Stack"
 msgstr "تکنولوژی‌های استفاده شده"
 
-#: portfolio/projects/templates/projects/project_detail.html:88
+#: portfolio/projects/templates/projects/project_detail.html:101
 msgid "Live Demo"
 msgstr "پیش‌نمایش زنده"
 
-#: portfolio/projects/templates/projects/project_detail.html:94
+#: portfolio/projects/templates/projects/project_detail.html:107
 msgid "Source Code"
 msgstr "سورس کد"
 
 #: portfolio/templates/components/bento_settings.html:8
-#: portfolio/templates/home.html:52
 msgid "Settings"
 msgstr "تنظیمات"
 
-#: portfolio/templates/home.html:26
-msgid "Helping startups launch MVPs and scale APIs securely."
-msgstr "کمک به استارتاپ‌ها در راه‌اندازی MVP و توسعه امن APIها."
+#: portfolio/templates/home.html:21
+msgid ""
+"\n"
+"\t\t\t\t\tAvailable for new projects\n"
+"\t\t\t\t\t"
+msgstr "آماده برای پروژه‌های جدید"
 
-#: portfolio/templates/home.html:32
-msgid "Hire Me"
-msgstr "شروع همکاری"
+#: portfolio/templates/home.html:41
+msgid ""
+"\n"
+"\t\t\t\tHelping startups launch MVPs and scale APIs securely.\n"
+"\t\t\t\t"
+msgstr "کمک به استارتاپ‌ها برای راه‌اندازی MVP و توسعه امن APIها."
 
-#: portfolio/templates/home.html:35
-msgid "See Work"
-msgstr "نمونه‌کارها"
+#: portfolio/templates/home.html:50
+msgid ""
+"\n"
+"\t\t\t\tHire Me\n"
+"\t\t\t\t"
+msgstr "استخدام من"
 
-#: portfolio/templates/home.html:77
-msgid "Services"
-msgstr "خدمات من"
+#: portfolio/templates/home.html:56
+msgid ""
+"\n"
+"\t\t\t\tSee Work\n"
+"\t\t\t\t"
+msgstr "مشاهده نمونه‌کارها"
 
-#: portfolio/templates/home.html:82
-msgid "MVP Dev"
-msgstr "توسعه MVP"
+#: portfolio/templates/home.html:79
+msgid ""
+"\n"
+"\t\t\t\tSettings\n"
+"\t\t\t\t"
+msgstr "تنظیمات"
 
-#: portfolio/templates/home.html:86
-msgid "API Design"
-msgstr "طراحی API"
+#: portfolio/templates/home.html:111
+msgid ""
+"\n"
+"\t\t\tServices\n"
+"\t\t\t"
+msgstr "خدمات"
 
-#: portfolio/templates/home.html:90
-msgid "Bot Dev"
-msgstr "ساخت ربات"
+#: portfolio/templates/home.html:133
+msgid ""
+"\n"
+"\t\t\tClick to see details\n"
+"\t\t\t"
+msgstr "برای مشاهده جزئیات کلیک کنید"
 
-#: portfolio/templates/home.html:117
-msgid "Projects coming soon..."
-msgstr "پروژه‌ها به زودی اضافه می‌شوند..."
+#: portfolio/templates/home.html:166
+msgid ""
+"\n"
+"\t\t\tProjects coming soon...\n"
+"\t\t\t"
+msgstr "پروژه‌ها به‌زودی..."
 
-#: portfolio/templates/home.html:124
-msgid "My Toolbox"
-msgstr "جعبه ابزار من"
+#: portfolio/templates/home.html:177
+msgid ""
+"\n"
+"\t\t\tMy Toolbox\n"
+"\t\t\t"
+msgstr "جعبه‌ابزار من"
 
-#: portfolio/templates/home.html:136
-msgid "Let's Work Together"
+#: portfolio/templates/home.html:195
+msgid ""
+"\n"
+"\t\t\tLet's Work Together\n"
+"\t\t\t"
 msgstr "بیایید با هم کار کنیم"
 
-#: portfolio/templates/home.html:137
-msgid "Have a project in mind? Fill out the form below."
+#: portfolio/templates/home.html:200
+msgid ""
+"\n"
+"\t\t\tHave a project in mind? Fill out the form below.\n"
+"\t\t\t"
 msgstr "پروژه‌ای در ذهن دارید؟ فرم زیر را پر کنید."
 
-#: portfolio/templates/home.html:167
-msgid "Send Message"
+#: portfolio/templates/home.html:234
+msgid ""
+"\n"
+"\t\t\t\tSend Message\n"
+"\t\t\t\t"
 msgstr "ارسال پیام"
 
-#~ msgid "Switch Lang"
-#~ msgstr "تغییر زبان"
-
-#~ msgid "Django + Tailwind"
-#~ msgstr "جنگو + تیل‌ویند"
-
-#~ msgid "Have a project?"
-#~ msgstr "پروژه‌ای در ذهن دارید؟"
-
-#~ msgid "Let's discuss your requirements."
-#~ msgstr "بیایید در مورد نیازمندی‌های شما صحبت کنیم."
-
-#~ msgid "Email Me"
-#~ msgstr "ارسال ایمیل"
+#: portfolio/templates/home.html:268
+msgid ""
+"\n"
+"\t\t\tInquire About This\n"
+"\t\t\t"
+msgstr "استعلام در مورد این خدمت"

@@ -6,199 +6,270 @@
 <!-- BENTO GRID -->
 <div class="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[minmax(180px,auto)] pb-10">
 
-    <!-- 1. HERO -->
-    <!-- Added: bg-noise -->
-    <div class="md:col-span-2 md:row-span-2 bg-white dark:bg-slate-900 bg-noise rounded-3xl p-8 flex flex-col justify-between shadow-sm border border-transparent dark:border-white/5 transition-all duration-300">
-        <div>
-            <div class="w-16 h-16 bg-blue-50 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center text-primary dark:text-blue-400 text-2xl mb-6 shadow-inner">
-                <i class="fas fa-terminal"></i>
-            </div>
-            
-            <h1 class="text-4xl font-bold mb-4 leading-tight text-gray-900 dark:text-white">
-                {% if LANGUAGE_CODE == 'fa' %}
-                    من <span class="text-primary">علی</span> هستم.<br>توسعه‌دهنده بک‌اند.
-                {% else %}
-                    I'm <span class="text-primary">Ali</span>.<br>I build scalable Backends.
-                {% endif %}
-            </h1>
-            
-            <p class="text-gray-500 dark:text-gray-400 text-lg">
-                {% trans "Helping startups launch MVPs and scale APIs securely." %}
-            </p>
-        </div>
-        
-        <div class="flex gap-4 mt-8">
-<a href="#contact" class="bg-gray-900 dark:bg-white text-white dark:text-black px-6 py-3 rounded-xl font-bold hover:opacity-90 transition shadow-lg">
-    {% trans "Hire Me" %}
-</a>
-            <a href="#projects" class="bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-white px-6 py-3 rounded-xl font-bold hover:bg-gray-200 dark:hover:bg-slate-700 transition">
-                {% trans "See Work" %}
-            </a>
-        </div>
-    </div>
+	<!-- 1. HERO (Added bento-animate + Availability Indicator + Hover Lift) -->
+	<div style="animation-delay: 0.1s;"
+		class="bento-animate md:col-span-2 md:row-span-2 bg-white dark:bg-slate-900 bg-noise rounded-3xl p-8 flex flex-col justify-between shadow-sm border border-transparent dark:border-white/5 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300">
+		<div>
+			<!-- NEW: Availability Indicator -->
+			<div class="flex items-center gap-2 mb-6">
+				<span class="relative flex h-3 w-3">
+					<span
+						class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+					<span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+				</span>
+				<span class="text-[10px] font-bold text-green-500 uppercase tracking-widest">
+					{% blocktrans %}
+					Available for new projects
+					{% endblocktrans %}
+				</span>
+			</div>
 
-    <!-- 2. PHOTO -->
-    <div class="md:col-span-1 md:row-span-1 bg-blue-600 rounded-3xl overflow-hidden relative group shadow-sm border border-transparent dark:border-white/5">
-        <img loading="lazy" src="http://localhost:5500/Generated%20Image%20October%2026%2C%202025%20-%201_06PM.png" class="w-full h-full object-cover transition duration-500 group-hover:scale-110" alt="Ali">
-        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-            <p class="text-white text-sm font-medium"><i class="fas fa-map-marker-alt text-red-500 mr-1"></i> Tehran, Iran</p>
-        </div>
-    </div>
+			<div
+				class="w-16 h-16 bg-blue-50 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center text-primary dark:text-blue-400 text-2xl mb-6 shadow-inner">
+				<i class="fas fa-terminal"></i>
+			</div>
 
-    <!-- 3. SETTINGS -->
-    <!-- Added: bg-noise -->
-    <div class="md:col-span-1 md:row-span-1 bg-gray-900 dark:bg-slate-900 bg-noise text-white rounded-3xl p-6 flex flex-col justify-between shadow-lg border border-transparent dark:border-white/5">
-        <div class="flex justify-between items-center">
-            <span class="text-gray-400 text-sm">{% trans "Settings" %}</span>
-            <button onclick="toggleTheme()" class="text-yellow-400 hover:text-yellow-300 transition focus:outline-none p-2 rounded-full hover:bg-white/10">
-                <i class="fas fa-sun block dark:hidden"></i>
-                <i class="fas fa-moon hidden dark:block"></i>
-            </button>
-        </div>
-        
-        <form action="{% url 'set_language' %}" method="post" class="flex gap-2 mt-2">
-            {% csrf_token %}
-            <input name="next" type="hidden" value="{{ request.path }}">
-            <button type="submit" name="language" value="en" class="flex-1 py-2 rounded-lg text-sm font-bold transition {% if LANGUAGE_CODE == 'en' %}bg-white text-black{% else %}bg-slate-800 text-gray-400 hover:bg-slate-700{% endif %}">EN</button>
-            <button type="submit" name="language" value="fa" class="flex-1 py-2 rounded-lg text-sm font-bold transition {% if LANGUAGE_CODE == 'fa' %}bg-white text-black{% else %}bg-slate-800 text-gray-400 hover:bg-slate-700{% endif %}">فا</button>
-        </form>
+			<h1 class="text-4xl font-bold mb-4 leading-tight text-gray-900 dark:text-white">
+				{% if LANGUAGE_CODE == 'fa' %}
+				من <span class="text-primary">علی</span> هستم.<br>توسعه‌دهنده بک‌اند.
+				{% else %}
+				I'm <span class="text-primary">Ali</span>.<br>I build scalable Backends.
+				{% endif %}
+			</h1>
 
-        <div class="flex gap-4 mt-4 text-xl justify-center border-t border-gray-700 pt-3">
-            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-github"></i></a>
-            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-linkedin"></i></a>
-            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-telegram"></i></a>
-        </div>
-    </div>
+			<span class="text-gray-500 dark:text-gray-400 text-lg">
+				{% blocktrans %}
+				Helping startups launch MVPs and scale APIs securely.
+				{% endblocktrans %}
+			</span>
+		</div>
 
-    <!-- 4. SERVICES -->
-<!-- BOX 4: SERVICES (Interactive) -->
-<div class="md:col-span-1 md:row-span-2 bg-white dark:bg-slate-900 bg-noise rounded-3xl p-6 border border-transparent dark:border-white/5 shadow-sm transition-all duration-300">
-    <h3 class="font-bold text-xl mb-6 flex items-center gap-2 text-gray-900 dark:text-white">
-        <i class="fas fa-bolt text-yellow-400"></i> {% trans "Services" %}
-    </h3>
-    
-    <div class="flex flex-col gap-3">
-        {% for service in services %}
-        <button onclick="openServiceModal('{{ service.id }}')" 
-                class="flex items-start gap-3 p-3 rounded-2xl hover:bg-gray-50 dark:hover:bg-slate-800 transition text-left rtl:text-right group w-full">
-            <div class="w-10 h-10 shrink-0 rounded-xl bg-gray-100 dark:bg-slate-800 flex items-center justify-center {{ service.color }} group-hover:scale-110 transition">
-                <i class="{{ service.icon }}"></i>
-            </div>
-            <div>
-                <strong class="block text-sm text-gray-900 dark:text-gray-100">{{ service.title }}</strong>
-                <span class="text-xs text-gray-500">{{ service.short }}</span>
-            </div>
-        </button>
-        {% endfor %}
-    </div>
+		<div class="flex gap-4 mt-8">
+			<a href="#contact"
+				class="bg-gray-900 dark:bg-white text-white dark:text-black px-6 py-3 rounded-xl font-bold hover:opacity-90 transition shadow-lg">
+				{% blocktrans %}
+				Hire Me
+				{% endblocktrans %}
+			</a>
+			<a href="#projects"
+				class="bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-white px-6 py-3 rounded-xl font-bold hover:bg-gray-200 dark:hover:bg-slate-700 transition">
+				{% blocktrans %}
+				See Work
+				{% endblocktrans %}
+			</a>
+		</div>
+	</div>
 
-    <!-- Small footer note in the box -->
-    <p class="mt-6 text-[10px] text-gray-400 uppercase tracking-widest text-center italic">
-        {% trans "Click to see details" %}
-    </p>
+	<!-- 2. PHOTO (Added bento-animate + Hover Lift) -->
+	<div style="animation-delay: 0.2s;"
+		class="bento-animate md:col-span-1 md:row-span-1 bg-blue-600 rounded-3xl overflow-hidden relative group shadow-sm border border-transparent dark:border-white/5 hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+		<img loading="lazy" src="http://localhost:5500/Generated%20Image%20October%2026%2C%202025%20-%201_06PM.png"
+			class="w-full h-full object-cover transition duration-500 group-hover:scale-110" alt="Ali">
+		<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+			<p class="text-white text-sm font-medium"><i class="fas fa-map-marker-alt text-red-500 mr-1"></i> Tehran,
+				Iran</p>
+		</div>
+	</div>
+
+	<!-- 3. SETTINGS (Added bento-animate + Hover Lift) -->
+	<div style="animation-delay: 0.3s;"
+		class="bento-animate md:col-span-1 md:row-span-1 bg-gray-900 dark:bg-slate-900 bg-noise text-white rounded-3xl p-6 flex flex-col justify-between shadow-lg border border-transparent dark:border-white/5 hover:-translate-y-1 transition-all duration-300">
+		<div class="flex justify-between items-center">
+			<span class="text-gray-400 text-sm">
+				{% blocktrans %}
+				Settings
+				{% endblocktrans %}
+			</span>
+			<button onclick="toggleTheme()"
+				class="text-yellow-400 hover:text-yellow-300 transition focus:outline-none p-2 rounded-full hover:bg-white/10">
+				<i class="fas fa-sun block dark:hidden"></i>
+				<i class="fas fa-moon hidden dark:block"></i>
+			</button>
+		</div>
+
+		<form action="{% url 'set_language' %}" method="post" class="flex gap-2 mt-2">
+			{% csrf_token %}
+			<input name="next" type="hidden" value="{{ request.path }}">
+			<button type="submit" name="language" value="en"
+				class="flex-1 py-2 rounded-lg text-sm font-bold transition {% if LANGUAGE_CODE == 'en' %}bg-white text-black{% else %}bg-slate-800 text-gray-400 hover:bg-slate-700{% endif %}">EN</button>
+			<button type="submit" name="language" value="fa"
+				class="flex-1 py-2 rounded-lg text-sm font-bold transition {% if LANGUAGE_CODE == 'fa' %}bg-white text-black{% else %}bg-slate-800 text-gray-400 hover:bg-slate-700{% endif %}">فا</button>
+		</form>
+
+		<div class="flex gap-4 mt-4 text-xl justify-center border-t border-gray-700 pt-3">
+			<a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-github"></i></a>
+			<a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-linkedin"></i></a>
+			<a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-telegram"></i></a>
+		</div>
+	</div>
+
+	<!-- 4. SERVICES (Added bento-animate + Hover Lift) -->
+	<div style="animation-delay: 0.4s;"
+		class="bento-animate md:col-span-1 md:row-span-2 bg-white dark:bg-slate-900 bg-noise rounded-3xl p-6 border border-transparent dark:border-white/5 shadow-sm hover:-translate-y-1 transition-all duration-300">
+		<h3 class="font-bold text-xl mb-6 flex items-center gap-2 text-gray-900 dark:text-white">
+			<i class="fas fa-bolt text-yellow-400"></i>
+			{% blocktrans %}
+			Services
+			{% endblocktrans %}
+		</h3>
+
+		<div class="flex flex-col gap-3">
+			{% for service in services %}
+			<button onclick="openServiceModal('{{ service.id }}')"
+				class="flex items-start gap-3 p-3 rounded-2xl hover:bg-gray-50 dark:hover:bg-slate-800 transition text-left rtl:text-right group w-full">
+				<div
+					class="w-10 h-10 shrink-0 rounded-xl bg-gray-100 dark:bg-slate-800 flex items-center justify-center {{ service.color }} group-hover:scale-110 transition">
+					<i class="{{ service.icon }}"></i>
+				</div>
+				<div>
+					<strong class="block text-sm text-gray-900 dark:text-gray-100">{{ service.title }}</strong>
+					<span class="text-xs text-gray-500">{{ service.short }}</span>
+				</div>
+			</button>
+			{% endfor %}
+		</div>
+
+		<p class="mt-6 text-[10px] text-gray-400 uppercase tracking-widest text-center italic">
+			{% blocktrans %}
+			Click to see details
+			{% endblocktrans %}
+		</p>
+	</div>
+
+	<!-- 5 & 6. PROJECTS (Added Dynamic Delay + Hover Lift) -->
+	{% for project in projects %}
+	<a href="{% url 'projects:detail' project.slug %}" style="animation-delay: {{ forloop.counter|add:4 }}00ms;"
+		class="bento-animate md:col-span-1 md:row-span-1 bg-white dark:bg-slate-900 bg-noise rounded-3xl p-3 group border border-transparent dark:border-white/5 hover:border-primary/50 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 relative overflow-hidden">
+		<div class="bg-gray-100 dark:bg-slate-800 rounded-2xl h-32 overflow-hidden mb-3 relative z-10">
+			{% if project.image %}
+			<img loading="lazy" src="{{ project.image.url }}"
+				class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+				alt="{{ project.get_title }}">
+			{% else %}
+			<div class="w-full h-full flex items-center justify-center text-gray-400"><i class="fas fa-code fa-2x"></i>
+			</div>
+			{% endif %}
+		</div>
+		<div class="px-1 relative z-10">
+			<h4 class="font-bold text-gray-900 dark:text-white truncate">{{ project.get_title }}</h4>
+			<p class="text-xs text-gray-500 line-clamp-1">{{ project.get_description }}</p>
+		</div>
+	</a>
+	{% endfor %}
+
+	<!-- Placeholder -->
+	{% if not projects %}
+	<div style="animation-delay: 0.5s;"
+		class="bento-animate md:col-span-2 md:row-span-1 bg-gray-50 dark:bg-slate-900 bg-noise rounded-3xl flex flex-col items-center justify-center text-gray-400 border-2 border-dashed border-gray-300 dark:border-slate-700">
+		<i class="fas fa-layer-group text-3xl mb-2 opacity-50"></i>
+		<span>
+			{% blocktrans %}
+			Projects coming soon...
+			{% endblocktrans %}
+		</span>
+	</div>
+	{% endif %}
+
+	<!-- 7. TOOLBOX (Added bento-animate + Hover Lift) -->
+	<div style="animation-delay: 0.7s;"
+		class="bento-animate md:col-span-2 md:row-span-1 bg-gray-900 dark:bg-slate-900 bg-noise text-white rounded-3xl p-8 flex flex-col justify-center border border-transparent dark:border-white/5 hover:-translate-y-1 transition-all duration-300">
+		<p class="text-gray-400 text-xs font-bold uppercase tracking-widest mb-4">
+			{% blocktrans %}
+			My Toolbox
+			{% endblocktrans %}
+		</p>
+		<div
+			class="flex flex-wrap gap-8 text-4xl text-gray-500 dark:text-slate-600 grayscale hover:grayscale-0 transition-all duration-300">
+			<i class="fab fa-python hover:text-yellow-400 transition transform hover:-translate-y-2"></i>
+			<i class="fab fa-docker hover:text-blue-500 transition transform hover:-translate-y-2"></i>
+			<i class="fas fa-database hover:text-blue-300 transition transform hover:-translate-y-2"></i>
+			<i class="fab fa-js hover:text-yellow-300 transition transform hover:-translate-y-2"></i>
+			<i class="fab fa-linux hover:text-white transition transform hover:-translate-y-2"></i>
+		</div>
+	</div>
+
+	<!-- 8. CONTACT FORM (Added bento-animate + Hover Lift) -->
+	<div id="contact" style="animation-delay: 0.8s;"
+		class="bento-animate md:col-span-2 md:row-span-2 bg-white dark:bg-slate-900 bg-noise rounded-3xl p-8 border border-transparent dark:border-white/5 shadow-xl hover:shadow-primary/5 transition-all duration-300">
+		<h2 class="text-2xl font-bold mb-2 text-gray-900 dark:text-white">
+			{% blocktrans %}
+			Let's Work Together
+			{% endblocktrans %}
+		</h2>
+		<p class="text-gray-500 dark:text-gray-400 mb-6 text-sm">
+			{% blocktrans %}
+			Have a project in mind? Fill out the form below.
+			{% endblocktrans %}
+		</p>
+
+		<form method="post" action="{% url 'pages:home' %}#contact" class="space-y-4">
+			{% csrf_token %}
+
+			<!-- Global Errors -->
+			{% if form.non_field_errors %}
+			<div class="text-red-500 text-sm mb-4">{{ form.non_field_errors }}</div>
+			{% endif %}
+
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+				<div>
+					{{ form.name }}
+					<span class="text-red-500 text-xs">{{ form.name.errors }}</span>
+				</div>
+				<div>
+					{{ form.email }}
+					<span class="text-red-500 text-xs">{{ form.email.errors }}</span>
+				</div>
+			</div>
+			<div>
+				{{ form.subject }}
+				<span class="text-red-500 text-xs">{{ form.subject.errors }}</span>
+			</div>
+			<div>
+				{{ form.message }}
+				<span class="text-red-500 text-xs">{{ form.message.errors }}</span>
+			</div>
+
+			<button type="submit"
+				class="w-full bg-primary hover:bg-blue-600 text-white font-bold py-4 rounded-xl shadow-lg shadow-blue-500/20 transition transform hover:-translate-y-1">
+				{% blocktrans %}
+				Send Message
+				{% endblocktrans %}
+			</button>
+		</form>
+	</div>
+
 </div>
 
-    <!-- 5 & 6. PROJECTS -->
-    <!-- Added: bg-noise -->
-    {% for project in projects %}
-    <a href="{% url 'projects:detail' project.slug %}" class="md:col-span-1 md:row-span-1 bg-white dark:bg-slate-900 bg-noise rounded-3xl p-3 group border border-transparent dark:border-white/5 hover:border-primary/50 transition relative overflow-hidden">
-        <div class="bg-gray-100 dark:bg-slate-800 rounded-2xl h-32 overflow-hidden mb-3 relative z-10">
-            {% if project.image %}
-                <img loading="lazy" src="{{ project.image.url }}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="{{ project.get_title }}">
-            {% else %}
-                <div class="w-full h-full flex items-center justify-center text-gray-400"><i class="fas fa-code fa-2x"></i></div>
-            {% endif %}
-        </div>
-        <div class="px-1 relative z-10">
-            <h4 class="font-bold text-gray-900 dark:text-white truncate">{{ project.get_title }}</h4>
-            <p class="text-xs text-gray-500 line-clamp-1">{{ project.get_description }}</p>
-        </div>
-    </a>
-    {% endfor %}
+<!-- SERVICE MODALS (Unchanged) -->
+<div id="service-modal-overlay"
+	class="fixed inset-0 z-[100] hidden bg-black/60 backdrop-blur-md flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
 
-    <!-- Placeholder -->
-    {% if not projects %}
-    <div class="md:col-span-2 md:row-span-1 bg-gray-50 dark:bg-slate-900 bg-noise rounded-3xl flex flex-col items-center justify-center text-gray-400 border-2 border-dashed border-gray-300 dark:border-slate-700">
-        <i class="fas fa-layer-group text-3xl mb-2 opacity-50"></i>
-        <span>{% trans "Projects coming soon..." %}</span>
-    </div>
-    {% endif %}
+	{% for service in services %}
+	<div id="modal-{{ service.id }}"
+		class="service-modal-content hidden max-w-md w-full bg-white dark:bg-slate-900 bg-noise rounded-3xl p-8 shadow-2xl transform scale-95 transition-all duration-300">
+		<div class="flex justify-between items-start mb-6">
+			<div
+				class="w-14 h-14 rounded-2xl bg-gray-100 dark:bg-slate-800 flex items-center justify-center text-2xl {{ service.color }}">
+				<i class="{{ service.icon }}"></i>
+			</div>
+			<button onclick="closeServiceModal()"
+				class="text-gray-400 hover:text-gray-600 dark:hover:text-white transition text-2xl">
+				<i class="fas fa-times"></i>
+			</button>
+		</div>
 
-    <!-- 7. TOOLBOX -->
-    <!-- Added: bg-noise -->
-    <div class="md:col-span-2 md:row-span-1 bg-gray-900 dark:bg-slate-900 bg-noise text-white rounded-3xl p-8 flex flex-col justify-center border border-transparent dark:border-white/5">
-        <p class="text-gray-400 text-xs font-bold uppercase tracking-widest mb-4">{% trans "My Toolbox" %}</p>
-        <div class="flex flex-wrap gap-8 text-4xl text-gray-500 dark:text-slate-600 grayscale hover:grayscale-0 transition-all duration-300">
-            <i class="fab fa-python hover:text-yellow-400 transition transform hover:-translate-y-1"></i>
-            <i class="fab fa-docker hover:text-blue-500 transition transform hover:-translate-y-1"></i>
-            <i class="fas fa-database hover:text-blue-300 transition transform hover:-translate-y-1"></i>
-            <i class="fab fa-js hover:text-yellow-300 transition transform hover:-translate-y-1"></i>
-            <i class="fab fa-linux hover:text-white transition transform hover:-translate-y-1"></i>
-        </div>
-    </div>
-    
-<!-- BOX 8: CONTACT FORM (Spans 2 columns, 2 rows for depth) -->
-<div id="contact" class="md:col-span-2 md:row-span-2 bg-white dark:bg-slate-900 bg-noise rounded-3xl p-8 border border-transparent dark:border-white/5 shadow-xl transition-all duration-300">
-    <h2 class="text-2xl font-bold mb-2 text-gray-900 dark:text-white">{% trans "Let's Work Together" %}</h2>
-    <p class="text-gray-500 dark:text-gray-400 mb-6 text-sm">{% trans "Have a project in mind? Fill out the form below." %}</p>
-    
-<form method="post" action="{% url 'pages:home' %}#contact" class="space-y-4">
-    {% csrf_token %}
-    
-    <!-- Global Errors -->
-    {% if form.non_field_errors %}
-        <div class="text-red-500 text-sm mb-4">{{ form.non_field_errors }}</div>
-    {% endif %}
+		<h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">{{ service.title }}</h3>
+		<p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-8">
+			{{ service.details }}
+		</p>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-            {{ form.name }}
-            <span class="text-red-500 text-xs">{{ form.name.errors }}</span>
-        </div>
-        <div>
-            {{ form.email }}
-            <span class="text-red-500 text-xs">{{ form.email.errors }}</span>
-        </div>
-    </div>
-    <div>
-        {{ form.subject }}
-        <span class="text-red-500 text-xs">{{ form.subject.errors }}</span>
-    </div>
-    <div>
-        {{ form.message }}
-        <span class="text-red-500 text-xs">{{ form.message.errors }}</span>
-    </div>
-    
-    <button type="submit" class="w-full bg-primary hover:bg-blue-600 text-white font-bold py-4 rounded-xl shadow-lg shadow-blue-500/20 transition transform hover:-translate-y-1">
-        {% trans "Send Message" %}
-    </button>
-</form>
-</div>
-
-</div>
-<!-- SERVICE MODALS -->
-<div id="service-modal-overlay" class="fixed inset-0 z-[100] hidden bg-black/60 backdrop-blur-md flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
-    
-    {% for service in services %}
-    <div id="modal-{{ service.id }}" class="service-modal-content hidden max-w-md w-full bg-white dark:bg-slate-900 bg-noise rounded-3xl p-8 shadow-2xl transform scale-95 transition-all duration-300">
-        <div class="flex justify-between items-start mb-6">
-            <div class="w-14 h-14 rounded-2xl bg-gray-100 dark:bg-slate-800 flex items-center justify-center text-2xl {{ service.color }}">
-                <i class="{{ service.icon }}"></i>
-            </div>
-            <button onclick="closeServiceModal()" class="text-gray-400 hover:text-gray-600 dark:hover:text-white transition text-2xl">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        
-        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">{{ service.title }}</h3>
-        <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-8">
-            {{ service.details }}
-        </p>
-        
-        <a href="#contact" onclick="closeServiceModal()" class="block text-center bg-primary text-white font-bold py-3 rounded-xl hover:opacity-90 transition">
-            {% trans "Inquire About This" %}
-        </a>
-    </div>
-    {% endfor %}
+		<a href="#contact" onclick="closeServiceModal()"
+			class="block text-center bg-primary text-white font-bold py-3 rounded-xl hover:opacity-90 transition">
+			{% blocktrans %}
+			Inquire About This
+			{% endblocktrans %}
+		</a>
+	</div>
+	{% endfor %}
 </div>
 {% endblock %}
